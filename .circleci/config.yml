@@ -11,8 +11,8 @@ jobs:
     steps:
       - checkout
       - run:
+          # check the commit message of the latest commit
           command: |
-            # check the commit message of the latest commit
             if [ $(git show --format=%B --quiet | grep -i "[noci]") ]; then
               cat .circleci/main.yml > pipeline.yml
             else
