@@ -14,9 +14,9 @@ jobs:
           command: |
             # check the commit message of the latest commit
             if [ $(git show --format=%B --quiet | grep -i "[noci]") ]; then
-              cat .circleci/main.yml > .circleci/pipeline.yml
-            else
               cat .circleci/noop.yml > .circleci/pipeline.yml
+            else
+              cat .circleci/main.yml > .circleci/pipeline.yml
             fi
       - continuation/continue:
           configuration_path: .circleci/pipeline.yml
