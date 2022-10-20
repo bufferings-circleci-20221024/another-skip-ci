@@ -14,9 +14,10 @@ jobs:
           command: |
             # check the commit message of the latest commit
             if git show --format=%B --quiet | grep -i "\[noci\]"; then
-              echo '[noci] is found in the latest commit message. Halting the job.'
-              circleci-agent step halt
-              exit
+              echo '[noci] is found in the latest commit message. No operation.'
+              cat .circleci/noop.yml > .circleci/pipeline.yml
+            else
+              cat .circleci/main.yml > .circleci/pipeline.yml
             fi
       - continuation/continue:
-          configuration_path: .circleci/main.yml
+          configuration_path: .circleci/pipeline.yml
