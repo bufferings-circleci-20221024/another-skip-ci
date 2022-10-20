@@ -13,7 +13,7 @@ jobs:
       - run:
           command: |
             # check the commit message of the latest commit
-            if git show --format=%B --quiet | grep -i "[noci]"; then
+            if git show --format=%B --quiet | grep -i "\[noci\]"; then
               echo '[noci] is found in the latest commit message. Halting the job.'
               circleci-agent step halt
               exit
